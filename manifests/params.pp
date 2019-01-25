@@ -110,8 +110,8 @@ class nfs::params {
       case $::lsbdistcodename {
         'trusty': {
           $client_services            = {'rpcbind' => {}}
-          $client_nfsv4_services      = {'rpcbind' => {}, 'nfs-common' => { require => Service['rpcbind'] }}
-          $server_nfsv4_servicehelper = undef
+          $client_nfsv4_services      = {'rpcbind' => {}}
+          $server_nfsv4_servicehelper = [ 'idmapd' ] 
           $server_service_name        = 'nfs-kernel-server'
         }
         'jessie', 'wheezy': {
